@@ -5,6 +5,14 @@ Proof of Concept service running on a Raspberry Pi that can control LED's via GP
 ### Stage One
 A Phoenix service installed and responding to /ping endpoint
 
+### Setting up the Raspberry Pi
+
+Install the things
+
+#### Erlang
+
+#### Elixir
+
 ### Stage Two
 Service blinks an LED while running
 
