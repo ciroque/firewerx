@@ -1,19 +1,32 @@
 # Firewerx
 
-To start your Phoenix app:
+Proof of Concept service running on a Raspberry Pi that can control LED's via GPIO and I2C protocol.
+ 
+### Stage One
+A Phoenix service installed and responding to /ping endpoint
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+### Stage Two
+Service blinks an LED while running
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Use Periodic Actor (example)
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+### Stage Three
+Endpoint can manipulate a second LED
 
-## Learn more
+HTTP POST /led 
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+on / off in body (some structured data)
+
+### Stage Four 
+Endpoint can cycle between various patterns on Pixel Matrix
+
+HTTP POST /matrix
+
+{ pattern: n }
+
+### Stage Five
+Endpoint accepts 8x8 matrix to determine set display state
+
+HTTP POST /matrix/raw
+
+[ [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ]]
