@@ -13,6 +13,22 @@ Install the things
 
 #### Elixir
 
+Configure the host
+
+#### Environment
+
+Create a file called `firewerx-env.sh` in `/etc/profile.d/` and add the following content
+
+```bash
+#!/bin/sh
+
+export FIREWERX_PORT=808
+export MIX_ENV=prod
+
+```
+
+This will set up the environment variables used by the service.
+
 ### Stage Two
 Service blinks an LED while running
 
