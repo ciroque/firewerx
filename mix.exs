@@ -29,6 +29,7 @@ defmodule Firewerx.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
   [
+    {:elixir_ale, "~> 1.0"},
     {:exrm, "~> 1.0"},
     {:phoenix, "~> 1.2.1"},
     {:phoenix_pubsub, "~> 1.0"},
