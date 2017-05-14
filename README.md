@@ -5,17 +5,17 @@ Proof of Concept service running on a Raspberry Pi that can control LED's via GP
 ### Stage One
 A Phoenix service installed and responding to /ping endpoint
 
-### Setting up the Raspberry Pi
+#### Setting up the Raspberry Pi
 
 Install the things
 
-#### Erlang
+##### Erlang
 
-#### Elixir
+##### Elixir
 
 Configure the host
 
-#### Environment
+##### Environment
 
 Create a file called `firewerx-env.sh` in `/etc/profile.d/` and add the following content
 
@@ -29,7 +29,7 @@ export MIX_ENV=prod
 
 This will set up the environment variables used by the service.
 
-#### Build
+##### Build
 
 The service must be built using the same OS as that on which it will run (Raspbian in the default case).
  
@@ -53,7 +53,7 @@ The service must be built using the same OS as that on which it will run (Raspbi
 References: 
  - http://www.phoenixframework.org/v0.6.2/docs/deployment
  
-#### Run
+##### Run
 
 `PORT=808 rel/firewerx/bin/firewerx start`
 
