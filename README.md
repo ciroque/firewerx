@@ -1,9 +1,6 @@
 # Firewerx
 
 Proof of Concept service running on a Raspberry Pi that can control LED's via GPIO and I2C protocol.
- 
-### Stage One
-A Phoenix service installed and responding to /ping endpoint
 
 #### Setting up the Raspberry Pi
 
@@ -64,6 +61,9 @@ confirm the service is running...
 `curl http://localhost:808/ping` should return "pong"
 
 also ensure the service can be called from a remote host.
+ 
+### Stage One
+A Phoenix service installed and responding to /ping endpoint
 
 ### Stage Two
 Service blinks an LED while running
