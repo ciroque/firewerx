@@ -11,5 +11,7 @@ defmodule Firewerx.Router do
 
      get "/", RootController, :index
      get "/ping", PingController, :index
+     get "/led", LedController, :index
+     post "/led/:value", LedController, :create
    end
 end
