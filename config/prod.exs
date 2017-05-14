@@ -14,7 +14,7 @@ use Mix.Config
 config :firewerx, Firewerx.Endpoint,
   http: [port: {:system, "FIREWERX_PORT"}],
 #  url: [host: "safat.wagner-x.net", port: 80],       ## Don't understand this yet...
-  cache_static_manifest: "priv/static/manifest.json"
+#  cache_static_manifest: "priv/static/manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info
