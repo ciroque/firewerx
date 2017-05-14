@@ -24,7 +24,7 @@ defmodule Firewerks.PeriodicBlinker do
   end
 
   def terminate(reason, state) do
-    IO.puts("")
+    IO.puts("REASON: #{reason}, STATE: #{state}")
     {:ok, state}
   end
 end
