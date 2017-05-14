@@ -29,6 +29,42 @@ export MIX_ENV=prod
 
 This will set up the environment variables used by the service.
 
+#### Build
+
+The service must be built using the same OS as that on which it will run (Raspbian in the default case).
+ 
+1. Clone the repo from github:
+
+    `git clone https://github.com/ciroque/firewerx.git`
+    
+1. Get the dependencies:
+
+    `mix deps.get`
+    
+1. Compile the dependencies:
+
+    `mix deps.compile`
+    
+1. Create the release:
+ 
+    `mix release`
+    
+    
+References: 
+ - http://www.phoenixframework.org/v0.6.2/docs/deployment
+ 
+#### Run
+
+`PORT=808 rel/firewerx/bin/firewerx start`
+
+confirm the service is running...
+
+`rel/firewerx/bin/firewerx ping` should return "pong"
+
+`curl http://localhost:808/ping` should return "pong"
+
+also ensure the service can be called from a remote host.
+
 ### Stage Two
 Service blinks an LED while running
 
