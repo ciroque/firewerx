@@ -1,18 +1,20 @@
 defmodule Firewerx.LedController do
+  use Firewerx.Web, :controller
 
   alias ElixirALE.GPIO
 
-  {:ok, gpio17_output} = GPIO.start_link(17, :output)
-  {:ok, gpio17_input} = GPIO.start_link(17, :input)
-
   def index(conn, _) do
-    value = GPIO.read(gpio17_input)
+    {:ok, read_pid } = GPIO.start_link(17, :output)
+    value = GPIO.read(read_pid)
+    GPIO.release(read_pid)
     send_resp(conn, 200, %{ value: value })
   end
 
   def create(conn, %{"value" => value}) do
     new_value =  normalize_value(value)
-    GPIO.write(gpio17_output, new_value)
+    {:ok, write_pid} = GPIO.start_link(17, :input)
+    GPIO.write(write_pid, new_value)
+    GPIO.release(write_pid)
     send_resp(conn, 200, %{new_value: new_value})
   end
 
