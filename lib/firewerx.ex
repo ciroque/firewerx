@@ -11,7 +11,7 @@ defmodule Firewerx do
       # Start the endpoint when the application starts
       supervisor(Firewerx.Endpoint, []),
       # Start your own worker by calling: Firewerx.Worker.start_link(arg1, arg2, arg3)
-      # worker(Firewerx.Worker, [arg1, arg2, arg3]),
+      worker(Firewerks.PeriodicBlinker, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
