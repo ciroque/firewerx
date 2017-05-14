@@ -7,7 +7,7 @@ use Mix.Config
 
 # Configures the endpoint
 config :firewerx, Firewerx.Endpoint,
-#  url: [host: "localhost"],
+  url: [host: "localhost"],
   secret_key_base: "+BQDrvqZH6CLg9sHmEfC7PXjSqMh0QUxrb/jDN/9osdjwPqfo3iusxRVW0Xwx/cG",
   render_errors: [view: Firewerx.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Firewerx.PubSub,
