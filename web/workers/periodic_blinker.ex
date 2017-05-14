@@ -3,7 +3,9 @@ defmodule Firewerks.PeriodicBlinker do
   alias ElixirALE.GPIO
 
   def start_link() do
-    GenServer.start_link(__MODULE__, %{})
+    {:ok, read_pid } = GPIO.start_link(4, :input)
+    {:ok, write_pid } = GPIO.start_link(4, :output)
+    GenServer.start_link(__MODULE__, %{ read_pid: read_pid, write_pid: write_pid })
   end
 
   def init(state) do
@@ -12,18 +14,13 @@ defmodule Firewerks.PeriodicBlinker do
   end
 
   def handle_info(:work, state) do
-    {:ok, read_pid } = GPIO.start_link(4, :input)
-    {:ok, write_pid } = GPIO.start_link(4, :output)
 
-    current_value = GPIO.read(read_pid)
+    current_value = GPIO.read(state.read_pid)
     new_value = toggle_value(current_value)
 
     IO.puts("toggling LED: current_value: #{current_value}, new_value: #{new_value}")
 
-    GPIO.write(write_pid, new_value)
-
-    GPIO.release(read_pid)
-    GPIO.release(write_pid)
+    GPIO.write(state.write_pid, new_value)
 
     schedule_work()
     {:noreply, state}
