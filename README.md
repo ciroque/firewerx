@@ -42,7 +42,6 @@ Create a file called `firewerx-env.sh` in `/etc/profile.d/` and add the followin
 ```bash
 #!/bin/sh
 
-export FIREWERX_PORT=808
 export MIX_ENV=prod
 
 ```
@@ -52,6 +51,8 @@ This will set up the environment variables used by the service.
 ##### Build
 
 The service must be built using the same OS as that on which it will run (Raspbian in the default case).
+
+1. ssh to the Raspberry Pi
  
 1. Clone the repo from github:
 
@@ -92,6 +93,8 @@ A Phoenix service installed and responding to /ping endpoint
 Service blinks an LED while running
 
 Use Periodic Actor ([example](https://gist.github.com/trestrantham/24f0892f2f6881474314))
+
+Use [elixir_ale](https://github.com/ciroque/elixir_ale) for GPIO functions
 
 ### Stage Three
 Endpoint can manipulate a second LED
