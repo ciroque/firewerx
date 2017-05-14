@@ -21,6 +21,7 @@ defmodule Firewerks.PeriodicBlinker do
     IO.puts("toggling LED: current_value: #{current_value}, new_value: #{new_value}")
 
     GPIO.write(pid, new_value)
+    GPIO.release(pid)
 
     schedule_work()
     {:noreply, state}
