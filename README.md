@@ -6,9 +6,32 @@ Proof of Concept service running on a Raspberry Pi that can control LED's via GP
 
 Install the things
 
-##### Erlang
+##### Erlang and Elixir
 
-##### Elixir
+```bash
+sudo vi /etc/apt/sources.list
+```
+
+append the following to the file:
+
+```bash
+deb http://packages.erlang-solutions.com/debian wheezy contrib
+```
+
+Import the public key:
+
+```bash
+wget http://packages.erlang-solutions.com/debian/erlang_solutions.asc
+sudo apt-key add erlang_solutions.asc && rm erlang_solutions.asc
+```
+
+Install:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y erlang
+sudo apt-get install -y elixir
+```
 
 Configure the host
 
@@ -68,7 +91,7 @@ A Phoenix service installed and responding to /ping endpoint
 ### Stage Two
 Service blinks an LED while running
 
-Use Periodic Actor (example)
+Use Periodic Actor ([example](https://gist.github.com/trestrantham/24f0892f2f6881474314))
 
 ### Stage Three
 Endpoint can manipulate a second LED
