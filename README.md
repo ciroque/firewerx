@@ -68,8 +68,6 @@ sudo apt-get install -y erlang
 sudo apt-get install -y elixir
 ```
 
-Configure the host
-
 #### Environment
 
 Create a file called `firewerx-env.sh` in `/etc/profile.d/` and add the following content
