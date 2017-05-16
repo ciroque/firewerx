@@ -2,6 +2,37 @@
 
 Proof of Concept service running on a Raspberry Pi that can control LED's via GPIO and I2C protocol.
 
+### Stage One
+A Phoenix service installed and responding to /ping endpoint
+
+### Stage Two
+Service blinks an LED while running
+
+Use Periodic Actor ([example](https://gist.github.com/trestrantham/24f0892f2f6881474314))
+
+Use [elixir_ale](https://github.com/ciroque/elixir_ale) for GPIO functions
+
+### Stage Three
+Endpoint can manipulate a second LED
+
+HTTP POST /led 
+
+on / off in body (some structured data)
+
+### Stage Four 
+Endpoint can cycle between various patterns on Pixel Matrix
+
+HTTP POST /matrix
+
+{ pattern: n }
+
+### Stage Five
+Endpoint accepts 8x8 matrix to determine set display state
+
+HTTP POST /matrix/raw
+
+[ [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ]]
+
 #### Setting up the Raspberry Pi
 
 Install the things
@@ -86,33 +117,22 @@ confirm the service is running...
 
 also ensure the service can be called from a remote host.
  
-### Stage One
-A Phoenix service installed and responding to /ping endpoint
 
-### Stage Two
-Service blinks an LED while running
+##### Exercise
 
-Use Periodic Actor ([example](https://gist.github.com/trestrantham/24f0892f2f6881474314))
+Ping:
 
-Use [elixir_ale](https://github.com/ciroque/elixir_ale) for GPIO functions
+`curl http://<raspberry-pi-ip>:8088/ping`
 
-### Stage Three
-Endpoint can manipulate a second LED
+Get the current state of the LED:
 
-HTTP POST /led 
+`curl http://<raspberry-pi-ip>:8088/led`
 
-on / off in body (some structured data)
+Turn the LED on:
 
-### Stage Four 
-Endpoint can cycle between various patterns on Pixel Matrix
+`curl -X POST -d '{"value":0}' -H "Content-Type: application/json" http://<raspberry-pi-ip>:8088/led`
 
-HTTP POST /matrix
+Turn the LED off:
 
-{ pattern: n }
+`curl -X POST -d '{"value":1}' -H "Content-Type: application/json" http://<raspberry-pi-ip>:8088/led`
 
-### Stage Five
-Endpoint accepts 8x8 matrix to determine set display state
-
-HTTP POST /matrix/raw
-
-[ [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ]]
