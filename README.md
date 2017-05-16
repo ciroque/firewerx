@@ -2,6 +2,8 @@
 
 Proof of Concept service running on a Raspberry Pi that can control LED's via GPIO and I2C protocol.
 
+## Stages of Development (Milestones if you prefer)
+
 ### Stage One
 A Phoenix service installed and responding to /ping endpoint
 
@@ -33,11 +35,13 @@ HTTP POST /matrix/raw
 
 [ [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ], [ 1, 1, 1, 1, 1, 1, 1, 1 ]]
 
-#### Setting up the Raspberry Pi
+## Getting it to work
+
+### Setting up the Raspberry Pi
 
 Install the things
 
-##### Erlang and Elixir
+#### Erlang and Elixir
 
 ```bash
 sudo vi /etc/apt/sources.list
@@ -66,7 +70,7 @@ sudo apt-get install -y elixir
 
 Configure the host
 
-##### Environment
+#### Environment
 
 Create a file called `firewerx-env.sh` in `/etc/profile.d/` and add the following content
 
@@ -79,7 +83,7 @@ export MIX_ENV=prod
 
 This will set up the environment variables used by the service.
 
-##### Build
+#### Build
 
 The service must be built using the same OS as that on which it will run (Raspbian in the default case).
 
@@ -105,7 +109,7 @@ The service must be built using the same OS as that on which it will run (Raspbi
 References: 
  - http://www.phoenixframework.org/v0.6.2/docs/deployment
  
-##### Run
+#### Run
 
 `PORT=808 rel/firewerx/bin/firewerx start`
 
@@ -118,7 +122,7 @@ confirm the service is running...
 also ensure the service can be called from a remote host.
  
 
-##### Exercise
+#### Exercise
 
 Ping:
 
