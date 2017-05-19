@@ -3,8 +3,8 @@ defmodule Firewerks.PeriodicBlinker do
   alias ElixirALE.GPIO
 
   def start_link() do
-    {:ok, read_pid } = GPIO.start_link(4, :input)
-    {:ok, write_pid } = GPIO.start_link(4, :output)
+    {:ok, read_pid } = GPIO.start_link(5, :input)
+    {:ok, write_pid } = GPIO.start_link(5, :output)
     GenServer.start_link(__MODULE__, %{ read_pid: read_pid, write_pid: write_pid })
   end
 
