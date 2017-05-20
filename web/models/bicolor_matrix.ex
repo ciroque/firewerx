@@ -20,7 +20,17 @@ defmodule BicolorMatrix do
     Enum.each(0..15, fn x -> write(<<x, 0x00>>) end)
   end
 
-  def write(data) do
+  def draw_index(index) do
+    drawings = drawings()
+    clear()
+    unless index < 0 || index >= tuple_size(drawings) do
+      elem(drawings, index).()
+    else
+      draw_random()
+    end
+  end
+
+  defp write(data) do
     pid = initialize()
     I2C.write(pid, data)
     release(pid)
@@ -128,7 +138,13 @@ defmodule BicolorMatrix do
   end
 
   def draw_random() do
-    drawings = {
+    index = :rand.uniform(tuple_size(drawings())) - 1
+    clear()
+    elem(drawings, index).()
+  end
+
+  defp drawings() do
+    {
       &draw_target/0,
       &draw_green_x/0,
       &draw_green_dot/0,
@@ -136,11 +152,5 @@ defmodule BicolorMatrix do
       &draw_yellow_dot/0,
       &draw_christmas_checkers/0
     }
-
-    index = :rand.uniform(tuple_size(drawings)) - 1
-
-    clear()
-    elem(drawings, index).()
   end
-
 end
