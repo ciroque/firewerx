@@ -115,7 +115,7 @@ References:
 
 #### Deploy
 
-Following these directions for actual release. The instructions below can be used locally or for testing.
+Follow these directions for actual release. The "Run" instructions below can be used locally or for testing.
 
 1. Copy the systemd configuration into place:
 
