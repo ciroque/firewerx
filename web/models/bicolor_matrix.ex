@@ -2,6 +2,8 @@ defmodule BicolorMatrix do
 
   alias ElixirALE.I2C
 
+  use Bitwise
+
   @off 0
   @green 1
   @red 2
@@ -37,7 +39,7 @@ defmodule BicolorMatrix do
   def set_brightness(brightness) do
     unless brightness < 0 || brightness > 15 do
       pid = start()
-      I2C.write(pid, <<0xE0, brightness>>)
+      I2C.write(pid, <<bor(0xE0, brightness)>>)
       release(pid)
     end
   end
