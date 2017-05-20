@@ -73,4 +73,32 @@ defmodule BicolorMatrix do
 
     write(<<0x0F, 0xFF>>)
   end
+
+  def draw_red_dot() do
+    write(<< 0x01, 0x18 >>)
+    write(<< 0x03, 0x3C >>)
+    write(<< 0x05, 0x7E >>)
+    write(<< 0x07, 0xFF >>)
+    write(<< 0x09, 0xFF >>)
+    write(<< 0x0B, 0x7E >>)
+    write(<< 0x0D, 0x3C >>)
+    write(<< 0x0F, 0x18 >>)
+  end
+
+  def draw_green_dot() do
+    write(<< 0x00, 0x18 >>)
+    write(<< 0x02, 0x3C >>)
+    write(<< 0x04, 0x7E >>)
+    write(<< 0x06, 0xFF >>)
+    write(<< 0x08, 0xFF >>)
+    write(<< 0x0A, 0x7E >>)
+    write(<< 0x0C, 0x3C >>)
+    write(<< 0x0E, 0x18 >>)
+  end
+
+  def draw_yellow_dot() do
+    draw_red_dot()
+    draw_green_dot()
+  end
+
 end
