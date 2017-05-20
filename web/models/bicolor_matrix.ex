@@ -37,7 +37,7 @@ defmodule BicolorMatrix do
   def set_brightness(brightness) do
     unless brightness < 0 || brightness > 15 do
       pid = start()
-      I2C.write(pid, <<0xFFFF, brightness>>)
+      I2C.write(pid, <<0xE0, brightness>>)
       release(pid)
     end
   end
