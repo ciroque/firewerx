@@ -40,10 +40,28 @@ runDemo() {
   ## ########################################################################
   ## Play with the matrix
   
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 0}'
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 0, "brightness": 0}'
   sleep $DELAY
   
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 1}'
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 1, "brightness": 1}'
+  sleep $DELAY
+  
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 2, "brightness": 2}'
+  sleep $DELAY
+  
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 3, "brightness": 3}'
+  sleep $DELAY
+  
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 4, "brightness": 4}'
+  sleep $DELAY
+  
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 5, "brightness": 5}'
+  sleep $DELAY
+  
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 0, "brightness": 6}'
+  sleep $DELAY
+  
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 1, "brightness": 7}'
   sleep $DELAY
   
   curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 2}'
@@ -58,40 +76,26 @@ runDemo() {
   curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 5}'
   sleep $DELAY
   
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 0}'
+  curl $URL/$LED_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"value": 1}' 
+  
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1, "brightness": 1}'
   sleep $DELAY
   
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 1}'
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1, "brightness": 4}'
   sleep $DELAY
   
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 2}'
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1, "brightness": 7}'
   sleep $DELAY
   
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 3}'
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1, "brightness": 10}'
   sleep $DELAY
   
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 4}'
-  sleep $DELAY
-  
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": 5}'
-  sleep $DELAY
-  
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1}'
-  sleep $DELAY
-  
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1}'
-  sleep $DELAY
-  
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1}'
-  sleep $DELAY
-  
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1}'
-  sleep $DELAY
-  
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1}'
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1, "brightness": 13}'
   sleep $DELAY
     
-  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1}'
+  curl $URL/$MATRIX_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"pattern": -1, "brightness": 15}'
+  
+  curl $URL/$LED_PATH -X POST -H "$JSON_CONTENT_TYPE" -d '{"value": 0}' 
 }
 
 while true ; do
