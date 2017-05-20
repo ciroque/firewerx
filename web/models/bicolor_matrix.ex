@@ -101,4 +101,46 @@ defmodule BicolorMatrix do
     draw_green_dot()
   end
 
+  def draw_christmas_checkers() do
+    write(<< 0x00, 0xAA >>)
+    write(<< 0x01, 0x55 >>)
+    
+    write(<< 0x03, 0xAA >>)
+    write(<< 0x02, 0x55 >>)
+
+    write(<< 0x04, 0xAA >>)
+    write(<< 0x05, 0x55 >>)
+
+    write(<< 0x07, 0xAA >>)
+    write(<< 0x06, 0x55 >>)
+
+    write(<< 0x08, 0xAA >>)
+    write(<< 0x09, 0x55 >>)
+
+    write(<< 0x0B, 0xAA >>)
+    write(<< 0x0A, 0x55 >>)
+
+    write(<< 0x0C, 0xAA >>)
+    write(<< 0x0D, 0x55 >>)
+
+    write(<< 0x0F, 0xAA >>)
+    write(<< 0x0E, 0x55 >>)
+  end
+
+  def draw_random() do
+    drawings = {
+      &draw_target/0,
+      &draw_green_x/0,
+      &draw_green_dot/0,
+      &draw_red_dot/0,
+      &draw_yellow_dot/0,
+      &draw_christmas_checkers/0
+    }
+
+    index = :rand.uniform(tuple_size(drawings)) - 1
+
+    clear()
+    elem(drawings, index).()
+  end
+
 end
