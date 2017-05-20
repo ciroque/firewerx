@@ -18,8 +18,6 @@ defmodule Firewerks.PeriodicBlinker do
     current_value = GPIO.read(state.read_pid)
     new_value = toggle_value(current_value)
 
-    IO.puts("toggling LED: current_value: #{current_value}, new_value: #{new_value}")
-
     GPIO.write(state.write_pid, new_value)
 
     schedule_work()
