@@ -93,6 +93,10 @@ The service must be built using the same OS as that on which it will run (Raspbi
 
     `git clone https://github.com/ciroque/firewerx.git`
     
+1. Switch to the firewerx directory:
+
+    `cd firewerx`
+
 1. Get the dependencies:
 
     `mix deps.get`
@@ -108,6 +112,25 @@ The service must be built using the same OS as that on which it will run (Raspbi
     
 References: 
  - http://www.phoenixframework.org/v0.6.2/docs/deployment
+
+#### Deploy
+
+Following these directions for actual release. The instructions below can be used locally or for testing.
+
+1. Copy the systemd configuration into place:
+
+    `sudo cp scripts/firewerx.service /lib/systemd/system`
+
+1. Enable the service in systemd:
+
+  `sudo systemctl enable firewerx.service`
+
+1. Start the service:
+
+  `sudo systemctl start firewerx.service`
+
+If all this succeeds the service will start when the Rasberry Pi is rebooted.
+
  
 #### Run
 
@@ -139,4 +162,16 @@ Turn the LED on:
 Turn the LED off:
 
 `curl -X POST -d '{"value":1}' -H "Content-Type: application/json" http://<raspberry-pi-ip>:8088/led`
+
+
+#### Demo
+
+There is a demo script in the scripts/ directory that exercises the service. It will run until you cancel execution with Ctrl + C.
+
+To execute it:
+
+  `scripts/demo.sh`
+
+Enjoy the show!
+
 
