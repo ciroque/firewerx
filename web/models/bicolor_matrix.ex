@@ -29,12 +29,10 @@ defmodule BicolorMatrix do
   def draw_index(index) do
     drawings = drawings()
     clear()
-    unless index < 0 || index >= tuple_size(drawings) do
-      elem(drawings, index).()
-    else if index == -2
-      clear()
-    else
-      draw_random()
+    case index do
+      i when i in 0..tuple_size(drawings) - 1 -> elem(drawings, i).()
+      o when o == -2 -> clear()
+      _ -> draw_random()
     end
   end
 
