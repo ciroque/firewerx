@@ -31,6 +31,8 @@ defmodule BicolorMatrix do
     clear()
     unless index < 0 || index >= tuple_size(drawings) do
       elem(drawings, index).()
+    else if index == -2
+      clear()
     else
       draw_random()
     end
