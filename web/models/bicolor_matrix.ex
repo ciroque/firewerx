@@ -174,6 +174,41 @@ defmodule BicolorMatrix do
     release(pid)
   end
 
+  def draw_red_smiley() do
+    pid = start()
+
+    write(pid, <<0x01, 0x1C>>)
+    write(pid, <<0x03, 0x42>>)
+    write(pid, <<0x05, 0xA5>>)
+    write(pid, <<0x07, 0x81>>)
+    write(pid, <<0x09, 0xA5>>)
+    write(pid, <<0x0B, 0x99>>)
+    write(pid, <<0x0D, 0x42>>)
+    write(pid, <<0x0F, 0x1C>>)
+
+    release(pid)
+  end
+
+  def draw_green_smiley() do
+    pid = start()
+
+    write(pid, <<0x00, 0x1C>>)
+    write(pid, <<0x02, 0x42>>)
+    write(pid, <<0x04, 0xA5>>)
+    write(pid, <<0x06, 0x81>>)
+    write(pid, <<0x08, 0xA5>>)
+    write(pid, <<0x0A, 0x99>>)
+    write(pid, <<0x0C, 0x42>>)
+    write(pid, <<0x0E, 0x1C>>)
+
+    release(pid)
+  end
+
+  def draw_yellow_smiley() do
+    draw_green_smiley()
+    draw_red_smiley()
+  end
+
   def draw_random() do
     index = :rand.uniform(tuple_size(drawings())) - 1
     clear()
@@ -187,7 +222,10 @@ defmodule BicolorMatrix do
       &draw_green_dot/0,
       &draw_red_dot/0,
       &draw_yellow_dot/0,
-      &draw_christmas_checkers/0
+      &draw_christmas_checkers/0,
+      &draw_green_smiley/0,
+      &draw_red_smiley/0,
+      &draw_yellow_smiley/0
     }
   end
 end
